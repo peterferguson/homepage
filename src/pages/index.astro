@@ -1,0 +1,42 @@
+---
+import Socials from "@components/socials.astro";
+import "@styles/global.css";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <title>Astro + TailwindCSS</title>
+    </head>
+
+    <body
+        class="bg-primary text-secondary font-sans overflow-y-scroll overflow-x-hidden accent-accent selection:bg-accent/20 selection:text-accent/80"
+    >
+        <div class="flex min-h-screen flex-col overflow-x-hidden">
+            <main class="relative z-10 flex flex-1 flex-col justify-center">
+                <div
+                    class="bg-[radial-gradient(1px,_var(--tw-gradient-stops))]
+                        bg-[0%_0%] bg-[length:2.5vmin_2.5vmin] mask
+                        from-white/30 to-transparent -z-10
+						h-screen w-screen absolute"
+                >
+                </div>
+                <div class="space-y-2">
+                    <h1 class="heading-3 sm:heading-1 text-center">
+                        Hi I am Peter
+                    </h1>
+                    <h2
+                        class="heading-5 text-gray-400 mx-auto max-w-[80%] sm:max-w-screen-lg text-center sm:heading-3"
+                    >
+                        This site is a work in progress but this is where you
+                        can find me
+                    </h2>
+                </div>
+                <Socials />
+            </main>
+        </div>
+    </body>
+</html>
