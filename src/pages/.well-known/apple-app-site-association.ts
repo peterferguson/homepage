@@ -16,4 +16,8 @@ const association = {
 	appclips: {},
 };
 
-export const get = () => ({ body: JSON.stringify(association) });
+export const GET: APIRoute = () =>
+	new Response(JSON.stringify(association), {
+		status: 200,
+		headers: { "Content-Type": "application/json" },
+	});
