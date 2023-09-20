@@ -1,3 +1,5 @@
+import type { APIRoute } from "astro";
+
 // - comma separated list of app IDs
 const APP_SUBDOMAINS = import.meta.env.APP_SUBDOMAINS ?? "";
 const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME;
@@ -14,4 +16,8 @@ const association = {
 	appclips: {},
 };
 
-export const GET = () => ({ body: JSON.stringify(association) });
+export const get: APIRoute = () =>
+	new Response(JSON.stringify(association), {
+		status: 200,
+		headers: { "Content-Type": "application/json" },
+	});
