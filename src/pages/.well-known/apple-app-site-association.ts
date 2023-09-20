@@ -6,9 +6,13 @@ const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME;
 if (!HOSTNAME) throw new Error("Missing HOSTNAME env var");
 
 const BUNDLE_ID = HOSTNAME.replace("https://", "").replace("/", "").split(".").reverse().join(".");
+// tODO: remove?
+const ANOTHER_PERSONAL_ID = "Z8DK8K7PFH";
 const PERSONAL_ID = "3ZDVH7APQS";
-const APP_ID = `${PERSONAL_ID}.${BUNDLE_ID}`;
-const appIds = [APP_ID, ...APP_SUBDOMAINS.split(",").flatMap((subdomain) => [`${APP_ID}.${subdomain}`])];
+const TEAM_ID = "Y37LU57238";
+const appIds = [PERSONAL_ID, TEAM_ID, ANOTHER_PERSONAL_ID]
+	.map((id) => `${id}.${BUNDLE_ID}`)
+	.flatMap((id) => [id, ...APP_SUBDOMAINS.split(".").map((subdomain) => `${id}.${subdomain}`)]);
 
 const association = {
 	applinks: {},
