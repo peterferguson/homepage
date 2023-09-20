@@ -10,10 +10,13 @@ if (!SERVICE_IDS) throw new Error("Missing SERVICE_IDS env var");
 const BUNDLE_ID = HOSTNAME.replace("https://", "").replace("/", "").split(".").reverse().join(".");
 const appIds = SERVICE_IDS.split(",")
 	.map((id) => `${id}.${BUNDLE_ID}`)
-	.flatMap((id) => [id, ...APP_SUBDOMAINS.split(".").map((subdomain) => `${id}.${subdomain}`)]);
+	.flatMap((id) => APP_SUBDOMAINS.split(".").map((subdomain) => `${id}.${subdomain}`));
 
 const association = {
-	applinks: {},
+	applinks: {
+		apps: appIds,
+		details: [{ appIDs: appIds, components: [{ "/": "/*" }] }],
+	},
 	webcredentials: { apps: appIds },
 	appclips: {},
 };
