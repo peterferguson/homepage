@@ -13,10 +13,7 @@ const appIds = SERVICE_IDS.split(",")
 	.flatMap((id) => APP_SUBDOMAINS.split(".").map((subdomain) => `${id}.${subdomain}`));
 
 const association = {
-	applinks: {
-		apps: appIds,
-		details: [{ appIDs: appIds, components: [{ "/": "/*" }] }],
-	},
+	applinks: { details: [{ appIDs: appIds, components: [{ "/": "/*" }] }] },
 	webcredentials: { apps: appIds },
 	appclips: {},
 };
